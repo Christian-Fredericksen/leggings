@@ -16,7 +16,7 @@ class CartsController < ApplicationController
         user_id = params[:user_id]
         user = User.find(user_id)
         cart = user.cart
-        render json: cart, include: [:game]
+        render json: cart, include: [:item]
     end
 
     def destroy
@@ -26,9 +26,9 @@ class CartsController < ApplicationController
     end
 
 
-private
-    def cart_params
-      params.require(:cart).permit(:user_id, :game_id)
+    private
+        def cart_params
+        params.require(:cart).permit(:user_id, :item_id)
+        end
     end
-end
 end
